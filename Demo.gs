@@ -11,7 +11,8 @@ function test() {
 
 // demo functions
 function getInvoice(invoiceUuid) {
-    return dbGetObjects(database, 'Invoices', "SELECT * WHERE uuid = '"+invoiceUuid+"'");
+    var query = "SELECT * WHERE uuid = '"+invoiceUuid+"'";
+    return dbGetObjects(database, 'Invoices', query); // inputs: inizialized spreadsheet, sheet name, query
 }
 
 function insertInvoice(customerUuid, activity, price, paid) {
