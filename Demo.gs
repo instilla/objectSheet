@@ -1,13 +1,16 @@
 //Fill this id with the id of your spreadsheet
 var database = initializeSpreadsheetById('1YvnHXKFMLSYeMtu7XkJLxnm21jugcDiuF4f2rEbsJnU');
+
 function test() {
-    insertInvoice('c08cddb8-156f-4531-9583-a0f1fa6f1564', 'Website', 200, true);
-    //updateInvoice('b9aa34f3-ad9c-4488-a94e-21ca8f646b0e','Sitarello');
-    //deleteInvoice('b9aa34f3-ad9c-4488-a94e-21ca8f646b0e');
+    var invoiceUuid = insertInvoice('c08cddb8-156f-4531-9583-a0f1fa6f1564', 'Website', 200, true);
+    updateInvoiceActivity(invoiceUuid, 'Sitarello');
+    var invoice = getInvoice(invoiceUuid);
+    Logger.Log(invoice);
+    deleteInvoice(invoiceUuid);
 }
 
-// functions
-function getInvoiceByUuid(invoiceUuid) {
+// demo functions
+function getInvoice(invoiceUuid) {
     return dbGetObjects(database, 'Invoices', "SELECT * WHERE uuid = '"+invoiceUuid+"'");
 }
 
@@ -21,17 +24,17 @@ function insertInvoice(customerUuid, activity, price, paid) {
         'priceWithVat': '=D2*1.22'
     }
     
-    dbInsertObject(database, 'Invoices', invoice); 
+    dbInsertObject(database, 'Invoices', invoice); // inputs: inizialized spreadsheet, sheet name, object to insert
     return invoice.uuid;
 }
 
-function updateInvoice(uuid, activity) {
+function updateInvoiceActivity(uuid, activity) {
     var invoice = {
         'uuid': uuid,
         'activity': activity
     }
     
-    dbUpdateObject(database, 'Invoices', 'uuid' ,invoice); 
+    dbUpdateObject(database, 'Invoices', 'uuid' ,invoice); // inputs: inizialized spreadsheet, sheet name, index column name, object to update
     return invoice.uuid;
 }
 
@@ -40,6 +43,6 @@ function deleteInvoice(uuid){
         'uuid': uuid
     }
     
-    dbDeleteObject(database, 'Invoices' ,'uuid' ,invoice); 
+    dbDeleteObject(database, 'Invoices' ,'uuid' ,invoice); // inputs: inizialized spreadsheet, sheet name, index column name, object to update
     return invoice.uuid;
 }
