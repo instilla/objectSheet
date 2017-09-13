@@ -5,14 +5,13 @@ function test() {
     var invoiceUuid = insertInvoice('c08cddb8-156f-4531-9583-a0f1fa6f1564', 'Website', 200, true);
     updateInvoiceActivity(invoiceUuid, 'Sitarello');
     var invoice = getInvoice(invoiceUuid);
-    Logger.Log(invoice);
+    Logger.log(invoice);
     deleteInvoice(invoiceUuid);
 }
 
 // demo functions
 function getInvoice(invoiceUuid) {
-    var query = "SELECT * WHERE uuid = '"+invoiceUuid+"'";
-    return dbGetObjects(database, 'Invoices', query); // inputs: inizialized spreadsheet, sheet name, query
+    return dbGetObjects(database, 'Invoices', "SELECT * WHERE uuid = '"+invoiceUuid+"'");
 }
 
 function insertInvoice(customerUuid, activity, price, paid) {

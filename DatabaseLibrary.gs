@@ -1,11 +1,11 @@
 // initialize spreadsheet
 function initializeSpreadsheetById(spreadSheetId) {
-	var spreadSheet = SpreadsheetApp.openById(spreadSheetId);
-	if (spreadSheet.getSheetByName('DBQueries') === undefined) {
-		spreadSheet.insertSheet('DBQueries');
-		var DBQueries = spreadSheet.getSheetByName('DBQueries');
-		DBQueries.hideSheet();
-	}
+    var spreadSheet = SpreadsheetApp.openById(spreadSheetId);
+    if (spreadSheet.getSheetByName('DBQueries') === undefined) {
+        spreadSheet.insertSheet('DBQueries');
+        var DBQueries = spreadSheet.getSheetByName('DBQueries');
+        DBQueries.hideSheet();
+    }
     return spreadSheet;
 }
 
@@ -175,5 +175,5 @@ function booleanToString(boolean) {
 }
 
 function stringToBoolean(string) {
-    return (string.toLowerCase() === 'true');
+    return (string === 'true');
 }
