@@ -98,7 +98,7 @@ function dbDeleteObject(spreadSheet, sheetName, indexName, object) {
 // sheet helpers
 function dbQuery(spreadSheet, sheetName, cellRange, queryString, explicitHeadings) {
     if (explicitHeadings === undefined | explicitHeadings == true) {
-        var explicitHeadingsString = "-1";
+        var explicitHeadingsString = "1";
     } else {
         var explicitHeadingsString = "0";
     }
