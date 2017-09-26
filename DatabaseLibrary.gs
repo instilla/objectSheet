@@ -1,3 +1,7 @@
+/******************************/
+/* Object Sheet Library, v0.1 */
+/******************************/
+
 // initialize spreadsheet
 function initializeSpreadsheetById(spreadSheetId) {
     var spreadSheet = SpreadsheetApp.openById(spreadSheetId);
