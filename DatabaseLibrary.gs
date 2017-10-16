@@ -175,9 +175,11 @@ function generateUuid() {
 function booleanToString(boolean) {
     if(boolean){
         return "TRUE";
-    } else return "FALSE";
+    } else {
+        return "FALSE";
+    }
 }
 
 function stringToBoolean(string) {
-    return (string === 'true');
+    return (string.toUpperCase() === 'TRUE');
 }
