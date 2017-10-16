@@ -73,7 +73,7 @@ function dbGetObjects(spreadSheet, sheetName, queryString) {
             var object = {};
             for (var jjj=0; jjj<rows[0].length; jjj++){
                  var value = rows[iii][jjj];
-                 if (typeof(value) == "boolean") {
+                 if (value == "TRUE" || value == "FALSE") {
                      value = stringToBoolean(value);
                  }
                  object[rows[0][jjj]] = value;
